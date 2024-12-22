@@ -11,28 +11,21 @@ if (BOOST_CXX20_MODULE)
   add_library(boost_core STATIC)
   boost_set_cxx20_module_settings(boost_core)
   target_sources(boost_core PUBLIC FILE_SET CXX_MODULES FILES modules/core.cxx)
-  target_include_directories(boost_core PUBLIC include)
-  target_link_libraries(boost_core
-    PUBLIC
-      Boost::assert
-      Boost::config
-      Boost::static_assert
-      Boost::throw_exception
-  )
-
+  set(__scope PUBLIC)
 else()
   add_library(boost_core INTERFACE)
-  target_include_directories(boost_core INTERFACE include)
-  target_link_libraries(boost_core
-    INTERFACE
-      Boost::assert
-      Boost::config
-      Boost::static_assert
-      Boost::throw_exception
-  )
+  set(__scope INTERFACE)
 endif()
 
 add_library(Boost::core ALIAS boost_core)
+target_include_directories(boost_core ${__scope} include)
+target_link_libraries(boost_core
+  ${__scope}
+    Boost::assert
+    Boost::config
+    Boost::static_assert
+    Boost::throw_exception
+)
 
 if(CMAKE_VERSION VERSION_GREATER 3.18 AND CMAKE_GENERATOR MATCHES "Visual Studio")
 
