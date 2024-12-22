@@ -15,6 +15,7 @@ import std;
 import boost.assert;
 import boost.throw_exception;
 
+#include <boost/core/detail/is_same.hpp>
 #include <boost/core/demangle.hpp>
 #include <boost/core/lightweight_test.hpp>
 #include <boost/core/lightweight_test_trait.hpp>

@@ -9,6 +9,7 @@
 // See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt
 
+#include <boost/config/modules.hpp>
 #ifndef BOOST_CXX20_MODULE
 #include <boost/config.hpp>
 #endif
@@ -24,7 +25,7 @@ namespace core
 namespace detail
 {
 
-template< class T1, class T2 > struct is_same
+BOOST_MODULE_EXPORT template< class T1, class T2 > struct is_same
 {
     BOOST_STATIC_CONSTANT( bool, value = false );
 };
