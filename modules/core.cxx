@@ -15,3 +15,4 @@ import boost.throw_exception;
 
 #include <boost/core/demangle.hpp>
 #include <boost/core/lightweight_test.hpp>
+#include <boost/core/type_name.hpp>

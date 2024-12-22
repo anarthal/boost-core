@@ -13,7 +13,9 @@
 // Distributed under the Boost Software License, Version 1.0.
 // https://www.boost.org/LICENSE_1_0.txt
 
+#include <boost/config/modules.hpp> // BOOST_MODULE_EXPORT
 #include <boost/core/demangle.hpp>
+#ifndef BOOST_CXX20_MODULE
 #include <boost/config.hpp>
 #include <string>
 #include <functional>
@@ -25,6 +27,7 @@
 #include <iosfwd>
 #if !defined(BOOST_NO_CXX17_HDR_STRING_VIEW)
 # include <string_view>
+#endif
 #endif
 
 namespace boost
@@ -1175,7 +1178,7 @@ template<template<class T, std::size_t N> class L, class T, std::size_t N> struc
 
 } // namespace detail
 
-template<class T> std::string type_name()
+BOOST_MODULE_EXPORT template<class T> std::string type_name()
 {
     return core::detail::tn_holder<T>::type_name( "" );
 }
