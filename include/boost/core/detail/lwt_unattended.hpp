@@ -5,9 +5,9 @@
 // Distributed under the Boost Software License, Version 1.0.
 // https://www.boost.org/LICENSE_1_0.txt
 
+#ifndef BOOST_CXX20_MODULE
 #include <cstdlib>
-#if defined(_MSC_VER) && defined(_CPPLIB_VER) && defined(_DEBUG)
-# include <crtdbg.h>
+#include <boost/core/detail/crtdbg.hpp>
 #endif
 
 namespace boost

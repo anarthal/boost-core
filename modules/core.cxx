@@ -1,11 +1,13 @@
 module;
 
+#include <cstdlib>
 #include <boost/config.hpp>
 #include <boost/config/workaround.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/assert.hpp>
 #include <boost/assert/current_location.hpp>
 #include <boost/core/detail/cxxabi.hpp>
+#include <boost/core/detail/crtdbg.hpp>
 
 export module boost.core;
 
