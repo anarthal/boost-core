@@ -15,6 +15,9 @@
 
 #include <boost/core/enable_if.hpp>
 #include <boost/core/detail/is_same.hpp>
+#include <boost/config/modules.hpp> // BOOST_MODULE_EXPORT
+
+#ifndef BOOST_USE_MODULES
 #include <boost/assert.hpp>
 #include <boost/assert/source_location.hpp>
 #include <boost/throw_exception.hpp>
@@ -33,6 +36,7 @@
 #endif
 #if !defined(BOOST_NO_CXX20_HDR_CONCEPTS) // std::common_reference_with
 # include <type_traits>
+#endif
 #endif
 
 namespace boost
@@ -333,6 +337,7 @@ template<class Ch> BOOST_CXX14_CONSTEXPR std::size_t find_last_not_of( Ch const*
 
 } // namespace detail
 
+BOOST_MODULE_EXPORT
 template<class Ch> class basic_string_view
 {
 private:
@@ -1182,6 +1187,7 @@ public:
 
 // stream inserter
 
+BOOST_MODULE_EXPORT
 template<class Ch> std::basic_ostream<Ch>& operator<<( std::basic_ostream<Ch>& os, basic_string_view<Ch> str )
 {
     Ch const* p = str.data();
@@ -1218,19 +1224,19 @@ template<class Ch> BOOST_CONSTEXPR_OR_CONST std::size_t basic_string_view<Ch>::n
 
 // typedef names
 
-typedef basic_string_view<char> string_view;
-typedef basic_string_view<wchar_t> wstring_view;
+BOOST_MODULE_EXPORT typedef basic_string_view<char> string_view;
+BOOST_MODULE_EXPORT typedef basic_string_view<wchar_t> wstring_view;
 
 #if !defined(BOOST_NO_CXX11_CHAR16_T)
-typedef basic_string_view<char16_t> u16string_view;
+BOOST_MODULE_EXPORT typedef basic_string_view<char16_t> u16string_view;
 #endif
 
 #if !defined(BOOST_NO_CXX11_CHAR32_T)
-typedef basic_string_view<char32_t> u32string_view;
+BOOST_MODULE_EXPORT typedef basic_string_view<char32_t> u32string_view;
 #endif
 
 #if defined(__cpp_char8_t) && __cpp_char8_t >= 201811L
-typedef basic_string_view<char8_t> u8string_view;
+BOOST_MODULE_EXPORT typedef basic_string_view<char8_t> u8string_view;
 #endif
 
 } // namespace core
