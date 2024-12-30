@@ -8,6 +8,10 @@ module;
 #include <boost/assert/current_location.hpp>
 #include <boost/core/detail/cxxabi.hpp>
 #include <boost/core/detail/crtdbg.hpp>
+#include <boost/cstdint.hpp>
+#if defined(_MSC_VER)
+#include <intrin.h>
+#endif
 
 export module boost.core;
 
@@ -21,4 +25,5 @@ extern "C++" {
 #include <boost/core/lightweight_test.hpp>
 #include <boost/core/lightweight_test_trait.hpp>
 #include <boost/core/type_name.hpp>
+#include <boost/core/bit.hpp>
 }

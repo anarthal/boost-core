@@ -15,16 +15,21 @@
 // Distributed under the Boost Software License, Version 1.0.
 // https://www.boost.org/LICENSE_1_0.txt
 
+#include <boost/config/modules.hpp>
+#ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/cstdint.hpp>
 #include <limits>
 #include <cstring>
 #include <cstdlib>
+#if defined(_MSC_VER)
+#include <intrin.h>
+#endif
+#endif
 
 #if defined(_MSC_VER)
 
-# include <intrin.h>
 # pragma intrinsic(_BitScanForward)
 # pragma intrinsic(_BitScanReverse)
 
@@ -69,7 +74,7 @@ namespace core
 
 #if defined(BOOST_CORE_HAS_BUILTIN_BIT_CAST)
 
-template<class To, class From>
+BOOST_MODULE_EXPORT template<class To, class From>
 BOOST_CONSTEXPR To bit_cast( From const & from ) BOOST_NOEXCEPT
 {
     return __builtin_bit_cast( To, from );
@@ -77,7 +82,7 @@ BOOST_CONSTEXPR To bit_cast( From const & from ) BOOST_NOEXCEPT
 
 #else
 
-template<class To, class From>
+BOOST_MODULE_EXPORT template<class To, class From>
 To bit_cast( From const & from ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( sizeof(To) == sizeof(From) );
@@ -123,7 +128,7 @@ BOOST_CONSTEXPR inline int countl_impl( boost::ulong_long_type x ) BOOST_NOEXCEP
 
 } // namespace detail
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR int countl_zero( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -293,7 +298,7 @@ inline int countl_impl( boost::uint64_t x ) BOOST_NOEXCEPT
 
 } // namespace detail
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CXX14_CONSTEXPR int countl_zero( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -320,7 +325,7 @@ BOOST_CXX14_CONSTEXPR int countl_zero( T x ) BOOST_NOEXCEPT
 
 #endif // defined(__GNUC__) || defined(__clang__)
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR int countl_one( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -362,7 +367,7 @@ BOOST_CONSTEXPR inline int countr_impl( boost::ulong_long_type x ) BOOST_NOEXCEP
 
 } // namespace detail
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR int countr_zero( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -518,7 +523,7 @@ inline int countr_impl( boost::uint64_t x ) BOOST_NOEXCEPT
 
 } // namespace detail
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CXX14_CONSTEXPR int countr_zero( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -545,7 +550,7 @@ BOOST_CXX14_CONSTEXPR int countr_zero( T x ) BOOST_NOEXCEPT
 
 #endif // defined(__GNUC__) || defined(__clang__)
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR int countr_one( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -595,7 +600,7 @@ BOOST_CORE_POPCOUNT_CONSTEXPR inline int popcount_impl( boost::ulong_long_type x
 
 #undef BOOST_CORE_POPCOUNT_CONSTEXPR
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR int popcount( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -628,7 +633,7 @@ BOOST_CXX14_CONSTEXPR inline int popcount_impl( boost::uint64_t x ) BOOST_NOEXCE
 
 } // namespace detail
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CXX14_CONSTEXPR int popcount( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -649,7 +654,7 @@ BOOST_CXX14_CONSTEXPR int popcount( T x ) BOOST_NOEXCEPT
 
 // rotating
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CXX14_CONSTEXPR T rotl( T x, int s ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -658,7 +663,7 @@ BOOST_CXX14_CONSTEXPR T rotl( T x, int s ) BOOST_NOEXCEPT
     return static_cast<T>( x << (static_cast<unsigned>( s ) & mask) | x >> (static_cast<unsigned>( -s ) & mask) );
 }
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CXX14_CONSTEXPR T rotr( T x, int s ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -669,7 +674,7 @@ BOOST_CXX14_CONSTEXPR T rotr( T x, int s ) BOOST_NOEXCEPT
 
 // integral powers of 2
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR bool has_single_bit( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -680,7 +685,7 @@ BOOST_CONSTEXPR bool has_single_bit( T x ) BOOST_NOEXCEPT
 // bit_width returns `int` now, https://cplusplus.github.io/LWG/issue3656
 // has been applied to C++20 as a DR
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR int bit_width( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -688,7 +693,7 @@ BOOST_CONSTEXPR int bit_width( T x ) BOOST_NOEXCEPT
     return std::numeric_limits<T>::digits - boost::core::countl_zero( x );
 }
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CONSTEXPR T bit_floor( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -742,7 +747,7 @@ BOOST_CXX14_CONSTEXPR inline boost::uint64_t bit_ceil_impl( boost::uint64_t x ) 
 
 } // namespace detail
 
-template<class T>
+BOOST_MODULE_EXPORT template<class T>
 BOOST_CXX14_CONSTEXPR T bit_ceil( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer && !std::numeric_limits<T>::is_signed );
@@ -793,14 +798,14 @@ BOOST_CXX14_CONSTEXPR T bit_ceil( T x ) BOOST_NOEXCEPT
 
 #if !defined(BOOST_NO_CXX11_SCOPED_ENUMS)
 
-enum class endian
+BOOST_MODULE_EXPORT enum class endian
 {
     big,
     little,
     native BOOST_CORE_BIT_NATIVE_INITIALIZER
 };
 
-typedef endian endian_type;
+BOOST_MODULE_EXPORT typedef endian endian_type;
 
 #else
 
@@ -920,7 +925,7 @@ BOOST_CXX14_CONSTEXPR inline boost::uint64_t byteswap_impl( boost::uint64_t x ) 
 
 } // namespace detail
 
-template<class T> BOOST_CXX14_CONSTEXPR T byteswap( T x ) BOOST_NOEXCEPT
+BOOST_MODULE_EXPORT template<class T> BOOST_CXX14_CONSTEXPR T byteswap( T x ) BOOST_NOEXCEPT
 {
     BOOST_STATIC_ASSERT( std::numeric_limits<T>::is_integer );
 
