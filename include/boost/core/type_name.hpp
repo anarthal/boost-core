@@ -15,7 +15,7 @@
 
 #include <boost/config/modules.hpp> // BOOST_MODULE_EXPORT
 #include <boost/core/demangle.hpp>
-#ifndef BOOST_CXX20_MODULE
+#ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
 #include <string>
 #include <functional>

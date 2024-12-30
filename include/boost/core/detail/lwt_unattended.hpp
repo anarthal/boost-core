@@ -5,7 +5,7 @@
 // Distributed under the Boost Software License, Version 1.0.
 // https://www.boost.org/LICENSE_1_0.txt
 
-#ifndef BOOST_CXX20_MODULE
+#ifndef BOOST_USE_MODULES
 #include <cstdlib>
 #include <boost/core/detail/crtdbg.hpp>
 #endif

@@ -24,7 +24,7 @@
 #include <boost/core/type_name.hpp>
 #include <boost/core/detail/is_same.hpp>
 #include <boost/config/modules.hpp>
-#ifndef BOOST_CXX20_MODULE
+#ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
 #endif
 

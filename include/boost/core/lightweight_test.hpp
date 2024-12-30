@@ -24,7 +24,7 @@
 
 #include <boost/core/detail/lwt_unattended.hpp>
 #include <boost/config/modules.hpp> // BOOST_MODULE_EXPORT
-#ifndef BOOST_CXX20_MODULE
+#ifndef BOOST_USE_MODULES
 #include <boost/current_function.hpp>
 #include <boost/config.hpp>
 #include <exception>
