@@ -9,13 +9,18 @@
 // derived from Sebastiano Vigna's public domain implementation
 // http://xorshift.di.unimi.it/splitmix64.c
 
+#include <boost/config/modules.hpp>
+#ifndef BOOST_USE_MODULES
 #include <boost/cstdint.hpp>
+#endif
+
 
 namespace boost
 {
 namespace detail
 {
 
+BOOST_MODULE_EXPORT
 class splitmix64
 {
 private:

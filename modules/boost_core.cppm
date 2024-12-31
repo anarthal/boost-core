@@ -22,6 +22,7 @@ import boost.throw_exception;
 extern "C++" {
 #include <boost/core/detail/is_same.hpp>
 #include <boost/core/detail/string_view.hpp>
+#include <boost/core/detail/splitmix64.hpp>
 #include <boost/core/demangle.hpp>
 #include <boost/core/enable_if.hpp>
 #include <boost/core/lightweight_test.hpp>
