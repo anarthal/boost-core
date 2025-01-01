@@ -81,6 +81,6 @@ BOOST_MODULE_EXPORT template<class T1, class T2> inline void test_trait_same_imp
 } // namespace detail
 } // namespace boost
 
-#include <boost/core/lightweight_test_macros_impl.hpp>
+#include <boost/core/lightweight_test_trait_macros_impl.hpp>
 
 #endif // #ifndef BOOST_CORE_LIGHTWEIGHT_TEST_TRAIT_HPP
