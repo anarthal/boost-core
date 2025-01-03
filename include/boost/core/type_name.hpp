@@ -13,7 +13,7 @@
 // Distributed under the Boost Software License, Version 1.0.
 // https://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/config/modules.hpp> // BOOST_MODULE_EXPORT
+#include <boost/core/detail/modules.hpp>
 #include <boost/core/demangle.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
@@ -1178,7 +1178,7 @@ template<template<class T, std::size_t N> class L, class T, std::size_t N> struc
 
 } // namespace detail
 
-BOOST_MODULE_EXPORT template<class T> std::string type_name()
+BOOST_CORE_MODULE_EXPORT template<class T> std::string type_name()
 {
     return core::detail::tn_holder<T>::type_name( "" );
 }

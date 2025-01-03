@@ -10,7 +10,7 @@
 // See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt
 
-#include <boost/config/modules.hpp>
+#include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
 #include <boost/core/detail/cxxabi.hpp>
@@ -30,10 +30,10 @@ namespace boost
 namespace core
 {
 
-BOOST_MODULE_EXPORT inline char const * demangle_alloc( char const * name ) BOOST_NOEXCEPT;
-BOOST_MODULE_EXPORT inline void demangle_free( char const * name ) BOOST_NOEXCEPT;
+BOOST_CORE_MODULE_EXPORT inline char const * demangle_alloc( char const * name ) BOOST_NOEXCEPT;
+BOOST_CORE_MODULE_EXPORT inline void demangle_free( char const * name ) BOOST_NOEXCEPT;
 
-BOOST_MODULE_EXPORT class scoped_demangled_name
+BOOST_CORE_MODULE_EXPORT class scoped_demangled_name
 {
 private:
     char const * m_p;

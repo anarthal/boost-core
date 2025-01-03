@@ -23,7 +23,7 @@
 //
 
 #include <boost/core/detail/lwt_unattended.hpp>
-#include <boost/config/modules.hpp> // BOOST_MODULE_EXPORT
+#include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/current_function.hpp>
 #include <boost/config.hpp>
@@ -93,7 +93,7 @@ inline int& test_errors()
     return test_results().errors();
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline bool test_impl(char const * expr, char const * file, int line, char const * function, bool v)
 {
     if( v )
@@ -111,7 +111,7 @@ inline bool test_impl(char const * expr, char const * file, int line, char const
     }
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline void error_impl(char const * msg, char const * file, int line, char const * function)
 {
     BOOST_LIGHTWEIGHT_TEST_OSTREAM
@@ -120,7 +120,7 @@ inline void error_impl(char const * msg, char const * file, int line, char const
     ++test_results().errors();
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline void throw_failed_impl(const char* expr, char const * excep, char const * file, int line, char const * function)
 {
    BOOST_LIGHTWEIGHT_TEST_OSTREAM
@@ -129,7 +129,7 @@ inline void throw_failed_impl(const char* expr, char const * excep, char const *
    ++test_results().errors();
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline void no_throw_failed_impl(const char* expr, const char* file, int line, const char* function)
 {
     BOOST_LIGHTWEIGHT_TEST_OSTREAM
@@ -138,7 +138,7 @@ inline void no_throw_failed_impl(const char* expr, const char* file, int line, c
    ++test_results().errors();
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline void no_throw_failed_impl(const char* expr, const char* what, const char* file, int line, const char* function)
 {
     BOOST_LIGHTWEIGHT_TEST_OSTREAM
@@ -220,37 +220,37 @@ inline std::string test_output_impl( char const& v )
 
 // predicates
 
-BOOST_MODULE_EXPORT struct lw_test_eq
+BOOST_CORE_MODULE_EXPORT struct lw_test_eq
 {
     template <typename T, typename U>
     bool operator()(const T& t, const U& u) const { return t == u; }
 };
 
-BOOST_MODULE_EXPORT struct lw_test_ne
+BOOST_CORE_MODULE_EXPORT struct lw_test_ne
 {
     template <typename T, typename U>
     bool operator()(const T& t, const U& u) const { return t != u; }
 };
 
-BOOST_MODULE_EXPORT struct lw_test_lt
+BOOST_CORE_MODULE_EXPORT struct lw_test_lt
 {
     template <typename T, typename U>
     bool operator()(const T& t, const U& u) const { return t < u; }
 };
 
-BOOST_MODULE_EXPORT struct lw_test_le
+BOOST_CORE_MODULE_EXPORT struct lw_test_le
 {
     template <typename T, typename U>
     bool operator()(const T& t, const U& u) const { return t <= u; }
 };
 
-BOOST_MODULE_EXPORT struct lw_test_gt
+BOOST_CORE_MODULE_EXPORT struct lw_test_gt
 {
     template <typename T, typename U>
     bool operator()(const T& t, const U& u) const { return t > u; }
 };
 
-BOOST_MODULE_EXPORT struct lw_test_ge
+BOOST_CORE_MODULE_EXPORT struct lw_test_ge
 {
     template <typename T, typename U>
     bool operator()(const T& t, const U& u) const { return t >= u; }
@@ -295,7 +295,7 @@ inline char const * lwt_predicate_name( lw_test_ge const& )
 
 //
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 template<class BinaryPredicate, class T, class U>
 inline bool test_with_impl(BinaryPredicate pred, char const * expr1, char const * expr2,
                            char const * file, int line, char const * function,
@@ -317,7 +317,7 @@ inline bool test_with_impl(BinaryPredicate pred, char const * expr1, char const 
     }
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline bool test_cstr_eq_impl( char const * expr1, char const * expr2,
   char const * file, int line, char const * function, char const * const t, char const * const u )
 {
@@ -336,7 +336,7 @@ inline bool test_cstr_eq_impl( char const * expr1, char const * expr2,
     }
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline bool test_cstr_ne_impl( char const * expr1, char const * expr2,
   char const * file, int line, char const * function, char const * const t, char const * const u )
 {
@@ -355,7 +355,7 @@ inline bool test_cstr_ne_impl( char const * expr1, char const * expr2,
     }
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 template<class FormattedOutputFunction, class InputIterator1, class InputIterator2>
 bool test_all_eq_impl(FormattedOutputFunction& output,
                       char const * file, int line, char const * function,
@@ -426,7 +426,7 @@ bool test_all_eq_impl(FormattedOutputFunction& output,
     }
 }
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 template<class FormattedOutputFunction, class InputIterator1, class InputIterator2, typename BinaryPredicate>
 bool test_all_with_impl(FormattedOutputFunction& output,
                         char const * file, int line, char const * function,
@@ -510,7 +510,7 @@ bool test_all_with_impl(FormattedOutputFunction& output,
 
 } // namespace detail
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline int report_errors()
 {
     boost::detail::test_result& result = boost::detail::test_results();
@@ -536,7 +536,7 @@ inline int report_errors()
 namespace core
 {
 
-BOOST_MODULE_EXPORT
+BOOST_CORE_MODULE_EXPORT
 inline void lwt_init()
 {
     boost::detail::test_results();

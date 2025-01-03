@@ -23,7 +23,7 @@
 #include <boost/core/lightweight_test.hpp>
 #include <boost/core/type_name.hpp>
 #include <boost/core/detail/is_same.hpp>
-#include <boost/config/modules.hpp>
+#include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
 #endif
@@ -33,7 +33,7 @@ namespace boost
 namespace detail
 {
 
-BOOST_MODULE_EXPORT template< class T > inline void test_trait_impl( char const * trait, void (*)( T ),
+BOOST_CORE_MODULE_EXPORT template< class T > inline void test_trait_impl( char const * trait, void (*)( T ),
   bool expected, char const * file, int line, char const * function )
 {
     if( T::value == expected )
@@ -53,12 +53,12 @@ BOOST_MODULE_EXPORT template< class T > inline void test_trait_impl( char const 
     }
 }
 
-BOOST_MODULE_EXPORT template<class T> inline bool test_trait_same_impl_( T )
+BOOST_CORE_MODULE_EXPORT template<class T> inline bool test_trait_same_impl_( T )
 {
     return T::value;
 }
 
-BOOST_MODULE_EXPORT template<class T1, class T2> inline void test_trait_same_impl( char const * types,
+BOOST_CORE_MODULE_EXPORT template<class T1, class T2> inline void test_trait_same_impl( char const * types,
   boost::core::detail::is_same<T1, T2> same, char const * file, int line, char const * function )
 {
     if( test_trait_same_impl_( same ) )

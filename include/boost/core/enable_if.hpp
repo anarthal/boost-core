@@ -14,7 +14,7 @@
 #ifndef BOOST_CORE_ENABLE_IF_HPP
 #define BOOST_CORE_ENABLE_IF_HPP
 
-#include <boost/config/modules.hpp>
+#include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
 #endif
@@ -24,7 +24,7 @@
 
 #ifndef BOOST_NO_SFINAE
 
-BOOST_MODULE_EXPORT namespace boost
+BOOST_CORE_MODULE_EXPORT namespace boost
 {
   template<typename T, typename R=void>
   struct enable_if_has_type
