@@ -7,6 +7,12 @@
 # pragma once
 #endif
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+import boost.core;
+
+#else
+
 // std::string boost::core::type_name<T>()
 //
 // Copyright 2021 Peter Dimov
@@ -1185,5 +1191,7 @@ BOOST_CORE_MODULE_EXPORT template<class T> std::string type_name()
 
 } // namespace core
 } // namespace boost
+
+#endif
 
 #endif  // #ifndef BOOST_CORE_TYPE_NAME_HPP_INCLUDED

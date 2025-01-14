@@ -9,6 +9,12 @@
 // See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+import boost.core;
+
+#else
+
 #include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
@@ -38,5 +44,7 @@ template< class T > struct is_same< T, T >
 } // namespace detail
 } // namespace core
 } // namespace boost
+
+#endif
 
 #endif // #ifndef BOOST_CORE_DETAIL_IS_SAME_HPP_INCLUDED

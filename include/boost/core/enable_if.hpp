@@ -14,6 +14,12 @@
 #ifndef BOOST_CORE_ENABLE_IF_HPP
 #define BOOST_CORE_ENABLE_IF_HPP
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+import boost.core;
+
+#else
+
 #include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
@@ -127,5 +133,7 @@ namespace boost {
 } // namespace boost
 
 #endif // BOOST_NO_SFINAE
+
+#endif
 
 #endif

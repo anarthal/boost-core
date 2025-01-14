@@ -10,6 +10,12 @@
 // See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+import boost.core;
+
+#else
+
 #include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/config.hpp>
@@ -105,5 +111,7 @@ inline std::string demangle( char const * name )
 } // namespace boost
 
 #undef BOOST_CORE_HAS_CXXABI_H
+
+#endif
 
 #endif // #ifndef BOOST_CORE_DEMANGLE_HPP_INCLUDED

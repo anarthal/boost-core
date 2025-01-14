@@ -7,6 +7,12 @@
 # pragma once
 #endif
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+import boost.core;
+
+#else
+
 // boost::core::basic_string_view<Ch>
 //
 // Copyright 2021 Peter Dimov
@@ -1264,6 +1270,8 @@ struct std::basic_common_reference<
 {
     using type = boost::core::basic_string_view<Ch>;
 };
+
+#endif
 
 #endif
 

@@ -7,6 +7,12 @@
 # pragma once
 #endif
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+import boost.core;
+
+#else
+
 // boost/core/bit.hpp
 //
 // A portable version of the C++20 standard header <bit>
@@ -954,6 +960,8 @@ BOOST_CORE_MODULE_EXPORT template<class T> BOOST_CXX14_CONSTEXPR T byteswap( T x
 
 #if defined(_MSC_VER)
 # pragma warning(pop)
+#endif
+
 #endif
 
 #endif  // #ifndef BOOST_CORE_BIT_HPP_INCLUDED
