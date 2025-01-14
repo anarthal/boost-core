@@ -7,6 +7,15 @@
 # pragma once
 #endif
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+#include <boost/current_function.hpp>
+#include <boost/config.hpp>
+#include <boost/core/lightweight_test_trait_macros_impl.hpp>
+import boost.core;
+
+#else
+
 // boost/core/lightweight_test_trait.hpp
 //
 // BOOST_TEST_TRAIT_TRUE, BOOST_TEST_TRAIT_FALSE, BOOST_TEST_TRAIT_SAME
@@ -82,5 +91,7 @@ BOOST_CORE_MODULE_EXPORT template<class T1, class T2> inline void test_trait_sam
 } // namespace boost
 
 #include <boost/core/lightweight_test_trait_macros_impl.hpp>
+
+#endif
 
 #endif // #ifndef BOOST_CORE_LIGHTWEIGHT_TEST_TRAIT_HPP

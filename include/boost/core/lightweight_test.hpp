@@ -7,6 +7,16 @@
 # pragma once
 #endif
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+#include <boost/current_function.hpp>
+#include <boost/config.hpp>
+#include <boost/core/lightweight_test_macros_impl.hpp>
+import boost.core;
+
+#else
+
+
 //
 //  boost/core/lightweight_test.hpp - lightweight test library
 //
@@ -546,5 +556,7 @@ inline void lwt_init()
 } // namespace boost
 
 #include <boost/core/lightweight_test_macros_impl.hpp>
+
+#endif
 
 #endif // #ifndef BOOST_CORE_LIGHTWEIGHT_TEST_HPP

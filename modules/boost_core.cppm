@@ -13,6 +13,8 @@ module;
 #include <intrin.h>
 #endif
 
+#define BOOST_CORE_INTERFACE_UNIT
+
 export module boost.core;
 
 import std;

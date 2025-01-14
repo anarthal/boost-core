@@ -9,6 +9,12 @@
 // derived from Sebastiano Vigna's public domain implementation
 // http://xorshift.di.unimi.it/splitmix64.c
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_CORE_INTERFACE_UNIT)
+
+import boost.core;
+
+#else
+
 #include <boost/core/detail/modules.hpp>
 #ifndef BOOST_USE_MODULES
 #include <boost/cstdint.hpp>
@@ -55,5 +61,7 @@ public:
 
 } // namespace detail
 } // namespace boost
+
+#endif
 
 #endif // #ifndef BOOST_CORE_DETAIL_SPLITMIX64_HPP_INCLUDED
