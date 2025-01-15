@@ -12,6 +12,7 @@
 #include <boost/current_function.hpp>
 #include <boost/config.hpp>
 #include <boost/core/lightweight_test_macros_impl.hpp>
+import std; // required by macros
 import boost.core;
 
 #else
